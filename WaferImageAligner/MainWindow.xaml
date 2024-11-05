@@ -5,22 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WaferImageAligner.ViewModels"
         mc:Ignorable="d"
-        Title="Wafer Image Aligner" Height="600" Width="800">
-    <Window.DataContext>
-        <local:MainViewModel/>
-    </Window.DataContext>
-    <Grid>
+        Title="Wafer Image Aligner" Height="800" Width="1200">
+    <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="200"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Margin="10">
-            <Button Content="Load Image" Command="{Binding LoadImageCommand}" Margin="0,0,10,0"/>
-            <Button Content="Process Image" Command="{Binding ProcessImageCommand}"/>
-        </StackPanel>
-        <Image Grid.Row="1" Source="{Binding DisplayImage}" Stretch="Uniform"/>
-        <TextBox Grid.Row="2" Text="{Binding LogText, Mode=OneWay}" IsReadOnly="True" 
-                 VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
+
+        <!-- 컨트롤 패널 추가 -->
+        <Button Content="작업 시작" 
+                Command="{Binding StartProcessingCommand}"
+                Width="100" 
+                Height="30" 
+                HorizontalAlignment="Left"
+                Margin="0,0,0,10"/>
+
+        <!-- 이미지 표시 영역 -->
+        <Border Grid.Row="1" 
+                BorderBrush="LightGray" 
+                BorderThickness="1" 
+                Margin="0,0,0,10">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" 
+                         VerticalScrollBarVisibility="Auto">
+                <Image Source="{Binding DisplayImage}" Stretch="None"/>
+            </ScrollViewer>
+        </Border>
+
+        <!-- 로그 영역 -->
+        <TextBox Grid.Row="2" 
+                 Text="{Binding LogText, Mode=OneWay}" 
+                 IsReadOnly="True"
+                 VerticalScrollBarVisibility="Auto"
+                 HorizontalScrollBarVisibility="Auto"
+                 FontFamily="Consolas"/>
     </Grid>
 </Window>
