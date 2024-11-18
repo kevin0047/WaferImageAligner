@@ -50,7 +50,7 @@ namespace WaferImageAligner.ViewModels
                 Directory.CreateDirectory(_alignedFolder);
             }
 
-            _processingTimer = new System.Timers.Timer(30000); // 30초
+            _processingTimer = new System.Timers.Timer(30000); // 2초
             _processingTimer.Elapsed += ProcessingTimer_Elapsed;
             StartProcessingCommand = new RelayCommand(StartProcessing); // 추가
 

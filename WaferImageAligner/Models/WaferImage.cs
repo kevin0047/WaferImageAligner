@@ -47,7 +47,7 @@ namespace WaferImageAligner.Models
                 Cv2.WarpAffine(OriginalImage, rotated, rotationMatrix, OriginalImage.Size());
 
                 ProcessedImage = CropImage(rotated, largestCircle);
-                Cv2.Resize(ProcessedImage, ProcessedImage, new OpenCvSharp.Size(4000, 4000));
+                Cv2.Resize(ProcessedImage, ProcessedImage, new OpenCvSharp.Size(1000, 1000));
 
                 Cv2.ImWrite("detected_circle_and_flat.png", visualizedImage);
                 Cv2.ImWrite("rotated_image.png", rotated);
